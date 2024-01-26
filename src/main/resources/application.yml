@@ -1,0 +1,31 @@
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create
+  # database config
+  datasource:
+    url: jdbc:mysql://localhost:3306/crawler_db
+    username: root
+    password: 1234
+    driver-class-name: com.mysql.cj.jdbc.Driver
+  # create schema if schema doesn't exist
+  flyway:
+    baseline-on-migrate: true
+    url: jdbc:mysql://localhost:3306
+    user: root
+    password: 1234
+    default-schema: crawler_db
+# first url that want to crawl
+url: https://en.wikipedia.org/
+# log config
+logging:
+  file:
+    name: ${user.home}/Documents/web-crawler/web-crawler.log
+  logback:
+    rolling policy:
+      file-name-pattern: ${user.home}/Documents/web-crawler/log history/web-crawler.%d{yyyy-MM-dd}.%i.log
+  level:
+    ir.NGCmsIot.FunctionModule: DEBUG
+  pattern:
+    file: '%d{yyyy-MM-dd HH:mm:ss.SSS} [%level] [%thread] [%logger:%line] %msg%n'
+    #console:
